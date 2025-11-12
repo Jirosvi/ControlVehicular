@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Vehículo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+        }
+        .card-header {
+            background-color: #0d6efd;
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 500;
+            padding: 15px;
+            border-radius: 1rem 1rem 0 0;
+            margin-bottom: 20px;
+        }
+        form { display: flex; flex-direction: column; }
+        .form-group { margin-bottom: 15px; }
+        label { font-weight: 500; margin-bottom: 5px; display: block; }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #0d6efd;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(13,110,253,0.2);
+        }
+        .form-text { font-size: 0.85rem; color: #6c757d; }
+        .text-danger { color: #dc3545; font-size: 0.85rem; }
+        .button-group { display: flex; justify-content: space-between; margin-top: 20px; }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 48%;
+            text-align: center;
+        }
+        .btn-success { background-color: #198754; color: white; }
+        .btn-success:hover { background-color: #157347; }
+        .btn-secondary { background-color: #6c757d; color: white; }
+        .btn-secondary:hover { background-color: #5c636a; }
+        @media (max-width: 600px) {
+            .button-group { flex-direction: column; gap: 10px; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">Registrar Vehículo</div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                <div class="form-group">
+                    <label>{{ field.label }}</label>
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <div class="form-text">{{ field.help_text }}</div>
+                    {% endif %}
+
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div class="button-group">
+                <button type="submit" class="btn btn-success">Registrar</button>
+                <a href="{% url 'dashboard_residente' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actualizar Perfil</title>
+<style>
+    /* Reset básico */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f8fb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 40px 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 550px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #004080;
+        margin-bottom: 30px;
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        margin-top: 20px;
+        color: #004080;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px 12px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+        border-color: #004080;
+        box-shadow: 0 0 5px rgba(0,64,128,0.2);
+        outline: none;
+    }
+
+    /* Mensajes de éxito */
+    .message {
+        text-align: center;
+        color: green;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    /* Botones */
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .button-group .btn-success {
+        flex: 1;
+        background-color: #004080;
+        color: white;
+        padding: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s;
+        text-decoration: none;
+    }
+
+    .button-group .btn-success:hover {
+        background-color: #0059b3;
+    }
+
+    .button-group .btn-secondary {
+        flex: 1;
+        display: inline-block;
+        background-color: #6c757d;
+        color: white;
+        padding: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        text-align: center;
+        transition: background-color 0.3s;
+        text-decoration: none;
+    }
+
+    .button-group .btn-secondary:hover {
+        background-color: #5c636a;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            padding: 30px 20px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        button, .button-group .btn-secondary {
+            padding: 10px;
+        }
+    }
+
+    .errorlist {
+        color: red;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Actualizar Perfil</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {% for field in form %}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% for error in field.errors %}
+                <div class="errorlist">{{ error }}</div>
+            {% endfor %}
+        {% endfor %}
+
+        <div class="button-group">
+            <button type="submit" class="btn-success">Actualizar</button>
+            <a href="{% url 'dashboard_residente' %}" class="btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+/* ---------------------------
+   ESTILOS PARA REGISTRO DE USUARIO
+---------------------------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #00C6FF, #0078D7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.form-container {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    width: 450px;
+    text-align: center;
+}
+
+/* TÍTULO */
+.form-container h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 26px;
+}
+
+/* FORMULARIO */
+.formulario-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* CAMPOS DE TEXTO */
+.formulario-registro input,
+.formulario-registro select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario-registro input:focus,
+.formulario-registro select:focus {
+    border-color: #0078D7;
+    box-shadow: 0 0 5px rgba(0, 120, 215, 0.3);
+    outline: none;
+}
+
+/* BOTÓN */
+.btn {
+    background-color: #0078D7;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #005FA3;
+}
+
+/* ENLACE DE LOGIN */
+.link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.link a {
+    color: #0078D7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
+
+/* MENSAJES DE DJANGO */
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* COLORES SEGÚN TIPO DE MENSAJE */
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+/* RESPONSIVO */
+@media (max-width: 500px) {
+    .form-container {
+        width: 90%;
+        padding: 30px 25px;
+    }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel del Vigilante</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard_vigilante.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Panel del Vigilante</h2>
+            <button class="toggle-btn" id="toggle-btn">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <ul class="menu">
+            <li><a href="#"><i class="fa fa-door-open"></i> <span>Control de acceso</span></a></li>
+            <li><a href="#"><i class="fa fa-car"></i> <span>Vehículos registrados</span></a></li>
+            <li><a href="{% url 'ver_residentes_vigilante' %}"><i class="fa fa-users"></i> <span>Residentes</span></a></li>
+            <li><a href="#"><i class="fa fa-user-check"></i> <span>Visitas autorizadas</span></a></li>
+            <li><a href="#"><i class="fa fa-history"></i> <span>Historial de accesos</span></a></li>
+            <li><a href="#"><i class="fa fa-cog"></i> <span>Configuración</span></a></li>
+        </ul>
+
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content" id="main-content">
+        <div class="topbar">
+            <h3>SmartGate</h3>
+            <div class="user-menu">
+                <button id="user-btn" class="user-btn">
+                    <i class="fa fa-user-shield"></i> {{ nombre }} {{ apellido }}
+                    <i class="fa fa-chevron-down"></i>
+                </button>
+                <div class="dropdown" id="dropdown">
+                    <a href="{% url 'logout' %}"><i class="fa fa-sign-out-alt"></i> Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>Bienvenido, {{ nombre }} {{ apellido }}</h2>
+            <p>Desde aquí puedes registrar accesos, consultar residentes, vehículos y visitas.</p>
+
+            <div class="cards-container">
+                <div class="card">
+                    <i class="fa fa-door-open"></i>
+                    <h3>Control de acceso</h3>
+                    <p>Registrar entrada o salida de vehículos y visitantes.</p>
+                </div>
+
+                <div class="card">
+                    <i class="fa fa-car"></i>
+                    <h3>Vehículos registrados</h3>
+                    <p>Consulta los vehículos autorizados dentro del condominio.</p>
+                </div>
+
+                <div class="card">
+                    <i class="fa fa-users"></i>
+                    <h3>Residentes</h3>
+                    <p>Visualiza los residentes registrados y sus datos básicos.</p>
+                </div>
+
+                <div class="card">
+                    <i class="fa fa-user-check"></i>
+                    <h3>Visitas autorizadas</h3>
+                    <p>Consulta o verifica visitantes con acceso permitido.</p>
+                </div>
+
+                <div class="card">
+                    <i class="fa fa-history"></i>
+                    <h3>Historial</h3>
+                    <p>Revisa el registro histórico de entradas y salidas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle
+        const toggleBtn = document.getElementById('toggle-btn');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('shifted');
+        });
+
+        // Dropdown user menu
+        const userBtn = document.getElementById('user-btn');
+        const dropdown = document.getElementById('dropdown');
+        userBtn.addEventListener('click', () => dropdown.classList.toggle('show'));
+        window.addEventListener('click', (e) => {
+            if (!userBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

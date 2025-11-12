@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Residentes</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f5f8fb; padding: 30px; }
+    .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);}
+    h2 { text-align: center; color: #004080; margin-bottom: 25px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 12px; border: 1px solid #ccc; text-align: center; }
+    th { background-color: #004080; color: white; }
+    tr:nth-child(even) { background-color: #f0f4f8; }
+    a { display: inline-block; margin-top: 20px; color: white; background-color: #004080; padding: 10px 15px; text-decoration: none; border-radius: 6px; }
+    a:hover { background-color: #0059b3; }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Lista de Residentes</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>DNI</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in residentes %}
+            <tr>
+                <td>{{ r.usuario.first_name }}</td>
+                <td>{{ r.usuario.last_name }}</td>
+                <td>{{ r.usuario.email }}</td>
+                <td>{{ r.dni }}</td>
+                <td>{{ r.direccion }}</td>
+                <td>{{ r.telefono }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No hay residentes registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'dashboard_vigilante' %}">Volver al Dashboard</a>
+</div>
+</body>
+</html>

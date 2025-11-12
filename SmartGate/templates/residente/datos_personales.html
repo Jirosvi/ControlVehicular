@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis Datos Personales</title>
+<style>
+    /* Reset básico */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f8fb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 40px 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #004080;
+        margin-bottom: 30px;
+        font-size: 2rem;
+    }
+
+    .datos {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        text-align: left;
+    }
+
+    .dato {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 15px;
+        background-color: #f0f4f8;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    .label {
+        font-weight: 600;
+        color: #004080;
+    }
+
+    .value {
+        color: #333;
+    }
+
+    /* Botones */
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 20px;
+        background-color: #004080;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #0059b3;
+    }
+
+    .buttons-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .buttons-group .btn {
+        flex: 1;
+        text-align: center;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            padding: 30px 20px;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+        .dato {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Mis Datos Personales</h2>
+
+    <div class="datos">
+        <div class="dato"><span class="label">Nombres:</span><span class="value">{{ usuario.first_name }}</span></div>
+        <div class="dato"><span class="label">Apellidos:</span><span class="value">{{ usuario.last_name }}</span></div>
+        <div class="dato"><span class="label">Correo electrónico:</span><span class="value">{{ usuario.email }}</span></div>
+        <div class="dato"><span class="label">DNI:</span><span class="value">{{ residente.dni }}</span></div>
+        <div class="dato"><span class="label">Dirección:</span><span class="value">{{ residente.direccion }}</span></div>
+        <div class="dato"><span class="label">Teléfono:</span><span class="value">{{ residente.telefono }}</span></div>
+    </div>
+
+    <div class="buttons-group">
+        <a href="{% url 'actualizar_perfil_residente' %}" class="btn">Actualizar Datos</a>
+        <a href="{% url 'dashboard_residente' %}" class="btn">Volver</a>
+    </div>
+</div>
+</body>
+</html>

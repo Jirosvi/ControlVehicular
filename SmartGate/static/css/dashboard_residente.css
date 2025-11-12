@@ -1,0 +1,225 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f8fb;
+    display: flex;
+    height: 100vh;
+}
+
+/* -------- SIDEBAR -------- */
+.sidebar {
+    width: 240px;
+    background-color: #004d40;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.sidebar-header h2 {
+    font-size: 18px;
+    margin: 0;
+    color: white;
+}
+
+.toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.menu {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 15px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.menu li:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.menu i {
+    font-size: 18px;
+    color: white;
+}
+
+.menu li span {
+    color: white;
+}
+
+/* -------- MAIN CONTENT -------- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+}
+
+/* -------- TOPBAR -------- */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 25px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.topbar h3 {
+    color: #007a5e;
+    margin: 0;
+}
+
+/* -------- USER MENU -------- */
+.user-menu {
+    position: relative;
+}
+
+.user-btn {
+    background: none;
+    border: none;
+    color: #007a5e;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+}
+
+.user-btn i {
+    color: #007a5e;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 38px;
+    right: 0;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    min-width: 160px;
+    z-index: 10;
+}
+
+.dropdown a {
+    display: block;
+    color: #007a5e;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown a:hover {
+    background-color: #f0f4f8;
+}
+
+.dropdown.show {
+    display: block;
+}
+
+/* -------- CONTENT -------- */
+.content {
+    padding: 40px;
+}
+
+.content h2 {
+    color: #007a5e;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.card i {
+    font-size: 35px;
+    color: #007a5e;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #007a5e;
+    margin: 10px 0;
+}
+
+.card p {
+    color: #555;
+    font-size: 14px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 900px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 100;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .toggle-btn {
+        display: inline-block;
+    }
+
+    .main-content.shifted {
+        margin-left: 240px;
+    }
+}
+
+@media (max-width: 600px) {
+    .topbar h3 {
+        font-size: 16px;
+    }
+
+    .user-btn {
+        font-size: 14px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>SmartGate - Inicio</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a SmartGate</h1>
+        <nav>
+            <a href="{% url 'login' %}">Iniciar sesión</a>
+            <a href="{% url 'registro' %}">Registrarse</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Control vehicular inteligente para tu urbanización</h2>
+        <p>Accede con tu cuenta para comenzar.</p>
+    </main>
+</body>
+</html>

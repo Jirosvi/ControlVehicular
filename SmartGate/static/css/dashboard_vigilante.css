@@ -1,0 +1,203 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f8fb;
+    display: flex;
+    height: 100vh;
+}
+
+/* -------- SIDEBAR -------- */
+.sidebar {
+    width: 240px;
+    background-color: #004d26;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.sidebar-header h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.menu {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 15px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.menu li:hover {
+    background-color: #00733e;
+}
+
+/* -------- MAIN CONTENT -------- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* -------- TOPBAR -------- */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 25px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Asegura que el menú de usuario esté alineado a la derecha */
+.user-menu {
+    margin-left: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* -------- USER BUTTON -------- */
+.user-btn {
+    background: none;
+    border: none;
+    color: #004d26;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    min-width: 160px;
+    z-index: 10;
+}
+
+.dropdown.show {
+    display: block;
+}
+
+.dropdown a {
+    display: block;
+    color: #004d26;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown a:hover {
+    background-color: #f0f4f8;
+}
+
+/* -------- CONTENT -------- */
+.content {
+    padding: 40px;
+}
+
+.content h2 {
+    color: #004d26;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.card i {
+    font-size: 35px;
+    color: #004d26;
+    margin-bottom: 15px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 900px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 100;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .toggle-btn {
+        display: inline-block;
+    }
+
+    .main-content.shifted {
+        margin-left: 240px;
+    }
+
+    .topbar {
+        padding: 10px 15px;
+    }
+
+    .user-btn {
+        font-size: 14px;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+}

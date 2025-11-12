@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}  <!-- 👈 Importante: cargar etiquetas estáticas antes de usarlas -->
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="{% static 'css/registro.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Registro de Usuario</h2>
+
+            <!-- Mostrar mensajes -->
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="message {{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form method="POST" class="formulario-registro">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn">Registrar</button>
+            </form>
+
+            <p class="link">
+                ¿Ya tienes una cuenta?
+                <a href="{% url 'login' %}">Inicia sesión</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+/* ---------------------------
+   ESTILOS PARA LOGIN DE USUARIO
+---------------------------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0078D7, #00C6FF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor-login {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    width: 400px;
+    text-align: center;
+}
+
+/* TÍTULO */
+.contenedor-login h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 26px;
+}
+
+/* FORMULARIO */
+.form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* CAMPOS DE TEXTO */
+.form-login input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border 0.3s ease;
+}
+
+.form-login input:focus {
+    border-color: #0078D7;
+    outline: none;
+}
+
+/* BOTÓN */
+.btn {
+    background-color: #0078D7;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #005FA3;
+}
+
+/* ENLACE DE REGISTRO */
+p {
+    margin-top: 20px;
+    color: #333;
+    font-size: 14px;
+}
+
+p a {
+    color: #0078D7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* MENSAJES DE DJANGO */
+.mensajes {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.mensajes li {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* COLORES SEGÚN TIPO DE MENSAJE */
+.mensajes li.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.mensajes li.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.mensajes li.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
